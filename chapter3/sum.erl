@@ -9,3 +9,9 @@ sum_interval(N, M) when N < M ->
     N + sum_interval(N + 1, M);
 sum_interval(N, M) when N == M -> N;
 sum_interval(N, M) when N > M -> {error, "N > M"}.
+
+test() ->
+  15 = sum(5),
+  6 = sum_interval(1,3),
+  6 = sum(6,6),
+  ok.
