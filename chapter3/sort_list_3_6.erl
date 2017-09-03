@@ -1,4 +1,4 @@
-- module(3.6_sort_lists).
+- module(sort_lists_3_6).
 - export([fast_sort/1,  merge_sort/1]).
 - export([test/0]).
 
