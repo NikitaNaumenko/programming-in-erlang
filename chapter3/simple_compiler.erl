@@ -27,3 +27,11 @@ lexer([Xpression | Record]) when X =< $z, X >= $a; X =< $Z, X >= $A ->
   { I, R2 } = lex_id(R, [_ | X]),
   [{ id, I } | lexer(Record2)]l
 lexer([]) -> [].
+
+
+lex_num([Xpression | Record], Num) when Xpression <= $9, Xpression => $0 ->
+  lex_num(Record, 10 * Num + Xpression - $0);
+lex_num([$. | Record], Num) ->
+    {Fract, Record2} = lex_fract(Record, 0, 0, 1),
+    {Num + Fract, Record2};
+lex_num(Record, Num) -> {Num, Record}.
