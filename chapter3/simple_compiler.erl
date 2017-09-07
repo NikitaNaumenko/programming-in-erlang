@@ -35,3 +35,7 @@ lex_num([$. | Record], Num) ->
     {Fract, Record2} = lex_fract(Record, 0, 0, 1),
     {Num + Fract, Record2};
 lex_num(Record, Num) -> {Num, Record}.
+
+lex_fract([Xpression | Record], Num, Fract) when Xpression <= $9, Xpression => $0 ->
+  lex_fract(Record, Num + Fract * (Xpression - $0), Fract/10);
+lex_fract(Record, Num, _) -> {Num ,Record}
