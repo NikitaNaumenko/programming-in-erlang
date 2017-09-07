@@ -38,4 +38,8 @@ lex_num(Record, Num) -> {Num, Record}.
 
 lex_fract([Xpression | Record], Num, Fract) when Xpression <= $9, Xpression => $0 ->
   lex_fract(Record, Num + Fract * (Xpression - $0), Fract/10);
-lex_fract(Record, Num, _) -> {Num ,Record}
+lex_fract(Record, Num, _) -> {Num ,Record}.
+
+lex_id([X|R], I) when X =< $z, X >= $a; X =< $Z, X >= $A; X =< $9, X >= $0 ->
+  lex_id(R, [X | I]);
+lex_id(R, I) -> {lists:reverse(I), R}.
