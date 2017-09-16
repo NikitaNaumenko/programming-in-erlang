@@ -6,7 +6,12 @@
 
 %- export([test/0]).
 
-parser(Expression) -> parser(lexer(Expression)).
+
+parse(L) -> parser(lexer(L)).
+
+parser(L) when is_list(L) ->
+  {T, []} = expression(L),
+  T.
 
 
 lexer("if"++R) -> ['if'|lexer(R)];
