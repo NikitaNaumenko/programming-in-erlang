@@ -1,4 +1,4 @@
--module(sum).
+-module(ex_3_1).
 -export([sum/1, sum/2, test/0]).
 
 sum(0) -> 0;

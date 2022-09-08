@@ -1,4 +1,4 @@
--module(new_list).
+-module(ex_3_2).
 -export([create/1, reverse_create/1, test/0]).
 
 create(N) -> create(N, []).
