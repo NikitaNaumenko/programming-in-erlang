@@ -1,5 +1,5 @@
 -module(ex_3_6).
--export([ quicksort/1, mergesort/1]).
+-export([quicksort/1, mergesort/1]).
 
 quicksort([]) ->
         [];
