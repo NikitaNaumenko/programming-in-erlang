@@ -1,19 +1,22 @@
-- module(echo).
-- export([go/0, loop/0]).
+-module(echo).
+
+-export([go/0, loop/0]).
 
 go() ->
   register(echo, spawn(?MODULE, loop, [])),
   echo ! {self(), hello},
-  receive 
+  receive
     {Pid, Message} ->
-      io:format("~w~n",[Message])
+      io:format("~w~n", [Message])
   end.
+
   % Pid ! stop.
 
 loop() ->
-  receive 
+  receive
     {From, Message} ->
       From ! {self(), Message},
       loop();
-    stop -> true
+    stop ->
+      true
   end.
