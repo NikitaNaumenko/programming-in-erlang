@@ -63,7 +63,6 @@ handle_msg({switch_handlers, OldHandler, NewHandler}, LoopData) ->
     {value, {OldHandler, Data}} ->
       NewData = OldHandler:terminate(Data),
       NewHandlerData = NewHandler:init(NewData),
-      Reply = {data, NewData},
       NewLoopData = lists:keyreplace(OldHandler, 1, LoopData, {NewHandler, NewHandlerData}),
       {{data, NewHandlerData}, NewLoopData}
   end.
